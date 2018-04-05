@@ -1,0 +1,55 @@
+﻿<Page
+    x:Class="_29Quizlet.Views.LoginSignupPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_29Quizlet.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_29Quizlet.ViewModels"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:LoginSignupPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid Background="{StaticResource ExtendedSplashBackground}">
+        <Canvas Grid.Row="1" x:Name="rootCanvas" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+            <Canvas.Background>
+                <ImageBrush ImageSource="ms-appx:///Assets/SplashScreen.png" Stretch="Uniform">
+                    <ImageBrush.Transform>
+                        <TranslateTransform Y="10" />
+                    </ImageBrush.Transform>
+                </ImageBrush>
+            </Canvas.Background>
+        </Canvas>
+        
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.1*"/>
+                <RowDefinition Height="0.8*"/>
+                <RowDefinition Height="0.1*"/>
+            </Grid.RowDefinitions>
+
+
+            <Grid Grid.Row="2">
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="0.5*"/>
+                    <ColumnDefinition Width="0.5*"/>
+                </Grid.ColumnDefinitions>
+
+                <Border Grid.Column="0" BorderThickness="0 1 1 0" BorderBrush="White" Tapped="{x:Bind ViewModel.LoginTapped}">
+                    <TextBlock Margin="0,0,0,0" Text="Login" FontSize="24" FontWeight="Medium" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"/>
+                </Border>
+
+                <Border Grid.Column="1" BorderThickness="0 1 0 0" BorderBrush="White" Tapped="{x:Bind ViewModel.SignUpTapped}">
+                    <TextBlock Margin="0,0,0,0" Text="Sign up" FontWeight="Medium" FontSize="24" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Segoe UI"/>
+
+                </Border>
+
+            </Grid>
+
+
+        </Grid>
+
+    </Grid>
+
+</Page>

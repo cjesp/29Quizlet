@@ -1,0 +1,127 @@
+<Page x:Class="_29Quizlet.Views.HomePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:Behaviors="using:Template10.Behaviors"
+      xmlns:Core="using:Microsoft.Xaml.Interactions.Core"
+      xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+      xmlns:controls="using:Template10.Controls"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="using:_29Quizlet.Views"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:data="using:_29Quizlet.Models.QuizletTypes.Feeds"
+      xmlns:selector="using:_29Quizlet.TemplateSelectors"
+      xmlns:converter="using:_29Quizlet.Converters"
+      xmlns:vm="using:_29Quizlet.ViewModels" mc:Ignorable="d">
+
+    <Page.DataContext>
+        <vm:HomePageViewModel x:Name="ViewModel" />
+    </Page.DataContext>
+    <Page.Resources>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+        <DataTemplate x:DataType="data:ClassFeedVM" x:Key="ClassFeedTemplate">
+
+            <StackPanel Orientation="Vertical" Margin="5,10,0,10">
+                <TextBlock FontSize="20" Text="{x:Bind ClassTitle}" VerticalAlignment="Bottom" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Text="{x:Bind SetTitle}" VerticalAlignment="Bottom"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="{x:Bind AddedByText}" VerticalAlignment="Bottom"/>
+                    <TextBlock Margin="5,0,0,0" FontSize="12" FontWeight="Bold" VerticalAlignment="Bottom" Text="{x:Bind AddedBy}"/>
+                    <!--<TextBlock Margin="5,0,0,0" FontSize="12" VerticalAlignment="Bottom" Text="{x:Bind Timestamp}"/>-->
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:DataType="data:StudySessionItemVM" x:Key="SessionFeedTemplate">
+            <StackPanel Orientation="Vertical" Margin="5,10,0,10">
+                <TextBlock FontSize="20" Text="{x:Bind Title}" VerticalAlignment="Bottom" />
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="14" Text="{x:Bind ModeAndTermCount}" VerticalAlignment="Bottom"/>
+                </StackPanel>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" Text="{x:Bind Timestamp}" VerticalAlignment="Bottom"/>
+                    <TextBlock Margin="5,0,0,0" FontSize="12" FontWeight="Bold" VerticalAlignment="Bottom" Text="{x:Bind CreatedBy}"/>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <DataTemplate x:DataType="data:ItemVM" x:Key="SetFeedTemplate">
+            <StackPanel Orientation="Vertical" Margin="5,10,0,10">
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="20" TextTrimming="CharacterEllipsis" Text="{x:Bind Title}"/>
+                    <TextBlock FontSize="12" Margin="3,5,0,0" TextTrimming="CharacterEllipsis" VerticalAlignment="Center" FontFamily="Segoe MDL2 Assets" Text="{x:Bind HasImages}"/>
+                </StackPanel>
+                <TextBlock FontSize="16" TextTrimming="CharacterEllipsis" TextWrapping="NoWrap" 
+                                   Visibility="{x:Bind HasDescription, Converter={StaticResource BoolToVisibilityConverter}}" 
+                                   Text="{x:Bind Description}"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBlock FontSize="12" TextTrimming="CharacterEllipsis" Text="{x:Bind Timestamp}">
+                    </TextBlock>
+                    <Border Visibility="{x:Bind IsPrivate, Converter={StaticResource BoolToVisibilityConverter}}" 
+                                    Background="LightGray" CornerRadius="2 2 2 2" Margin="5,0,0,0" Padding="2">
+                        <TextBlock VerticalAlignment="Center" FontSize="8" Foreground="Black">
+                                    PRIVATE
+                        </TextBlock>
+                    </Border>
+                </StackPanel>
+            </StackPanel>
+        </DataTemplate>
+        <selector:HomeFeedTemplateSelector x:Key="HomeFeedTemplateSelector" ClassFeedTemplate="{StaticResource ClassFeedTemplate}" 
+                                           SessionFeedTemplate="{StaticResource SessionFeedTemplate}"
+                                           SetFeedTemplate="{StaticResource SetFeedTemplate}"/>
+    </Page.Resources>
+
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                        <Setter Target="stateTextBox.Text" Value="Narrow Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                        <Setter Target="stateTextBox.Text" Value="Normal Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                        <Setter Target="stateTextBox.Text" Value="Wide Visual State" />
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+    
+        <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader Grid.Row="0" x:Name="pageHeader" Text="Home">
+
+        </controls:PageHeader>
+        <ScrollViewer Grid.Row="1"  VerticalScrollMode="Enabled">
+            <ListView  SelectionMode="Single" ItemsSource="{x:Bind ViewModel.HomeFeeds}" 
+                  SelectionChanged="{x:Bind ViewModel.Selected}"
+                  IsItemClickEnabled="True"
+                  ItemTemplateSelector="{StaticResource HomeFeedTemplateSelector}">
+
+            </ListView>
+        </ScrollViewer>
+    </Grid>
+
+</Page>
+

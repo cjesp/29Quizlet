@@ -1,0 +1,79 @@
+﻿<Page
+    x:Class="_29Quizlet.Views.CardsPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_29Quizlet.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_29Quizlet.ViewModels"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:cards="using:_29Quizlet.Models.ViewModels"
+    xmlns:mycontrols="using:_29Quizlet.Controls"
+    xmlns:Interactivity="using:Microsoft.Xaml.Interactivity"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:CardPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <VisualStateManager.VisualStateGroups>
+            <VisualStateGroup x:Name="AdaptiveVisualStateGroup">
+                <VisualState x:Name="VisualStateNarrow">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NarrowMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for narrow view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateNormal">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource NormalMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for normal view  -->
+                    </VisualState.Setters>
+                </VisualState>
+                <VisualState x:Name="VisualStateWide">
+                    <VisualState.StateTriggers>
+                        <AdaptiveTrigger MinWindowWidth="{StaticResource WideMinWidth}" />
+                    </VisualState.StateTriggers>
+                    <VisualState.Setters>
+                        <!--  TODO: change properties for wide view  -->
+                    </VisualState.Setters>
+                </VisualState>
+            </VisualStateGroup>
+        </VisualStateManager.VisualStateGroups>
+
+        <controls:PageHeader Grid.Row="0"  x:Name="pageHeader" Frame="{x:Bind Frame}" Text="Flashcard Mode">
+            <!--  place stretched, across top  -->
+            <RelativePanel.AlignTopWithPanel>True</RelativePanel.AlignTopWithPanel>
+            <RelativePanel.AlignRightWithPanel>True</RelativePanel.AlignRightWithPanel>
+            <RelativePanel.AlignLeftWithPanel>True</RelativePanel.AlignLeftWithPanel>
+        </controls:PageHeader>
+
+        <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10,20,10,10">
+            <TextBlock Text="{x:Bind ViewModel.ProgressText, Mode=OneWay}" HorizontalAlignment="Center"/>
+            <ProgressBar Margin="0,10,0,10" Maximum="{x:Bind ViewModel.MaxProgressValue, Mode=OneWay}" Value="{x:Bind ViewModel.ProgressValue, Mode=OneWay}" IsIndeterminate="False">
+                
+            </ProgressBar>
+        </StackPanel>
+
+        <FlipView Grid.Row="2" ItemsSource="{x:Bind ViewModel.Cards, Mode=OneWay}" Background="Transparent" SelectionChanged="{x:Bind ViewModel.Flip}">
+            <FlipView.ItemTemplate>
+                <DataTemplate x:DataType="cards:CardViewModel">
+                    <mycontrols:FlashCardControl BackText="{x:Bind BackText}" FrontText="{x:Bind FrontText}">
+
+                    </mycontrols:FlashCardControl>
+                </DataTemplate>
+            </FlipView.ItemTemplate>
+
+        </FlipView>
+    </Grid>
+</Page>

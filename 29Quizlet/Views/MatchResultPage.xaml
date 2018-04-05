@@ -1,0 +1,30 @@
+﻿<Page
+    x:Class="_29Quizlet.Views.MatchResultPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_29Quizlet.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_29Quizlet.ViewModels"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:MatchResultPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <StackPanel Orientation="Vertical" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <TextBlock Text="You finished in" FontSize="28" HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Bind ViewModel.TimeResult}" FontSize="24" HorizontalAlignment="Center"/>
+            <TextBlock Text="{x:Bind ViewModel.Errors}" FontSize="24" HorizontalAlignment="Center"/>
+            <Button HorizontalAlignment="Center" Margin="0,30,0,15" Width="180"
+                    Command="{x:Bind ViewModel.PlayAgainCommand}">
+                <TextBlock Text="Play Again"/>
+            </Button>
+            <Button HorizontalAlignment="Center" Width="180" Command="{x:Bind ViewModel.GoBackCommand}">
+                <TextBlock Text="Back to Set"/>
+            </Button>
+            
+        </StackPanel>
+
+    </Grid>
+</Page>

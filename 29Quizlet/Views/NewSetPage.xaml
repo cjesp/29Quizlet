@@ -1,0 +1,137 @@
+﻿<Page
+    x:Class="_29Quizlet.Views.NewSetPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:_29Quizlet.Views"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:vm="using:_29Quizlet.ViewModels"
+    xmlns:controls="using:Template10.Controls"
+    xmlns:pagevm="using:_29Quizlet.Models.ViewModels"
+    xmlns:converter="using:_29Quizlet.Converters"
+    mc:Ignorable="d">
+    <Page.DataContext>
+        <vm:NewSetPageViewModel x:Name="ViewModel"/>
+    </Page.DataContext>
+    <Page.Resources>
+        <converter:ComboBoxLanguageConverter x:Key="LanguageConverter"/>
+        <converter:InverseBoolToVisibilityConverter x:Key="InverseBoolToVisibilityConverter"/>
+        <converter:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter"/>
+    </Page.Resources>
+
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+
+        <controls:PageHeader Grid.Row="0"  x:Name="pageHeader" Frame="{x:Bind Frame}" Text="Create a new set" Margin="0,0,0,0">
+            <!--  place stretched, across top  -->
+            <RelativePanel.AlignTopWithPanel>True</RelativePanel.AlignTopWithPanel>
+            <RelativePanel.AlignRightWithPanel>True</RelativePanel.AlignRightWithPanel>
+            <RelativePanel.AlignLeftWithPanel>True</RelativePanel.AlignLeftWithPanel>
+        </controls:PageHeader>
+
+        <ScrollViewer Grid.Row="1" VerticalScrollMode="Enabled">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="Auto"/>
+                    <RowDefinition Height="*"/>
+                </Grid.RowDefinitions>
+
+
+                <Grid Margin="10">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="Auto"/>
+                        <ColumnDefinition Width="*"/>
+                    </Grid.ColumnDefinitions>
+
+                    <StackPanel Grid.Column="0" VerticalAlignment="Center" Margin="0,0,10,-5"
+                                Visibility="{x:Bind ViewModel.ShowTitleError, Mode=OneWay, Converter={StaticResource BoolToVisibilityConverter}}">
+                        <TextBlock Text="&#xE711;" VerticalAlignment="Bottom" Foreground="Tomato"  FontFamily="Segoe MDL2 Assets"/>
+                    </StackPanel>
+
+                    <StackPanel Grid.Column="1" Orientation="Vertical">
+                        <TextBlock Text="TITLE" FontSize="12"/>
+                        <TextBox Text="{x:Bind ViewModel.Title, Mode=TwoWay}" VerticalAlignment="Stretch" TextChanged="{x:Bind ViewModel.TitleTextChanged}"/>
+                    </StackPanel>
+
+                </Grid>
+
+                <StackPanel Grid.Row="1" Orientation="Vertical" Margin="10">
+                    <TextBlock Text="TERM LANGUAGE" FontSize="12"/>
+                    <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}"
+                              SelectedItem="{x:Bind ViewModel.SelectedTermLanguage, Mode=TwoWay, Converter={StaticResource LanguageConverter}}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="pagevm:LanguageViewModel">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="14" Text="{x:Bind Language}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="2" Orientation="Vertical" Margin="10">
+                    <TextBlock Text="DEFINITION LANGUAGE" FontSize="12"/>
+                    <ComboBox ItemsSource="{x:Bind ViewModel.LanguageOptions}"
+                              SelectedItem="{x:Bind ViewModel.SelectedDefinitionLanguage, Mode=TwoWay, Converter={StaticResource LanguageConverter}}">
+                        <ComboBox.ItemTemplate>
+                            <DataTemplate x:DataType="pagevm:LanguageViewModel">
+                                <StackPanel Orientation="Horizontal">
+                                    <TextBlock FontSize="14" Text="{x:Bind Language}"/>
+                                </StackPanel>
+                            </DataTemplate>
+                        </ComboBox.ItemTemplate>
+                    </ComboBox>
+                </StackPanel>
+
+                <StackPanel Grid.Row="3" Orientation="Vertical" Margin="10">
+                    <TextBlock Text="VIEWABLE BY" FontSize="12"/>
+                    <ToggleSwitch OnContent="Everyone" OffContent="Just me" IsOn="{x:Bind ViewModel.EveryoneOrMe, Mode=TwoWay}"/>
+                </StackPanel>
+                
+                <ListView Grid.Row="5" ItemsSource="{x:Bind ViewModel.TermsDefinitions}">
+                    <ListView.ItemContainerStyle>
+                        <Style TargetType="ListViewItem">
+                            <Setter Property="HorizontalContentAlignment" Value="Stretch"/>
+                        </Style>
+                    </ListView.ItemContainerStyle>
+                    <ListView.ItemTemplate>
+                        <DataTemplate x:DataType="pagevm:TermDefinitionViewModel">
+                            <Border BorderThickness="0 1 0 0" BorderBrush="Gray">
+                                <Grid VerticalAlignment="Stretch" HorizontalAlignment="Stretch" Padding="0,10,0,0">
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition Width="Auto"/>
+                                        <ColumnDefinition Width=".4*"/>
+                                        <ColumnDefinition Width=".6*"/>
+                                    </Grid.ColumnDefinitions>
+                                    <TextBlock Text="&#xE711;" VerticalAlignment="Center" Foreground="Tomato" Margin="0,0,5,3" 
+                                               FontFamily="Segoe MDL2 Assets" Visibility="{x:Bind Valid, Mode=OneWay, Converter={StaticResource InverseBoolToVisibilityConverter}}"/>
+                                    <TextBox Grid.Column="1" Margin="0,0,5,0" PlaceholderText="Term"
+                                             HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                                             BorderThickness="0" Text="{x:Bind Term, Mode=TwoWay}"/>
+                                    <TextBox Grid.Column="2" Margin="5,0,0,0" PlaceholderText="Definition"
+                                             HorizontalAlignment="Stretch" VerticalAlignment="Center" 
+                                             BorderThickness="0" TextWrapping="Wrap" Text="{x:Bind Definition, Mode=TwoWay}"/>
+                                </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListView.ItemTemplate>
+
+                </ListView>
+            </Grid>
+        </ScrollViewer>
+        <CommandBar Grid.Row="2">
+            <AppBarButton Icon="Delete" Label="Delete row" Click="{x:Bind ViewModel.DeleteRow}"/>
+            <AppBarButton Icon="Add" Label="Add row" Click="{x:Bind ViewModel.AddRow}"/>
+            <AppBarButton Icon="Save" Label="Save" Click="{x:Bind ViewModel.Save}"/>
+        </CommandBar>
+    </Grid>
+</Page>

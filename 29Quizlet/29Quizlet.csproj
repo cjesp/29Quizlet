@@ -1,0 +1,616 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="14.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">x86</Platform>
+    <ProjectGuid>{9F47320D-DB14-4BF8-8FA3-3AEFA4781193}</ProjectGuid>
+    <OutputType>AppContainerExe</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>_29Quizlet</RootNamespace>
+    <AssemblyName>29Quizlet</AssemblyName>
+    <DefaultLanguage>en-US</DefaultLanguage>
+    <TargetPlatformIdentifier>UAP</TargetPlatformIdentifier>
+    <TargetPlatformVersion>10.0.15063.0</TargetPlatformVersion>
+    <TargetPlatformMinVersion>10.0.10586.0</TargetPlatformMinVersion>
+    <MinimumVisualStudioVersion>14</MinimumVisualStudioVersion>
+    <EnableDotNetNativeCompatibleProfile>true</EnableDotNetNativeCompatibleProfile>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{A5A43C5B-DE2A-4C0C-9213-0A381AF9435A};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <PackageCertificateKeyFile>29Quizlet_StoreKey.pfx</PackageCertificateKeyFile>
+    <AppxAutoIncrementPackageRevision>True</AppxAutoIncrementPackageRevision>
+    <AppxBundle>Always</AppxBundle>
+    <AppxBundlePlatforms>x86|x64|arm</AppxBundlePlatforms>
+    <PackageCertificateThumbprint>E84998C3F95C37E6ABA32930A02E76A5A6343E1E</PackageCertificateThumbprint>
+    <RuntimeIdentifiers>win10-arm;win10-arm-aot;win10-x86;win10-x86-aot;win10-x64;win10-x64-aot</RuntimeIdentifiers>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|ARM'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\ARM\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|ARM'">
+    <OutputPath>bin\ARM\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x64'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x64\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x64'">
+    <OutputPath>bin\x64\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|x86'">
+    <DebugSymbols>true</DebugSymbols>
+    <OutputPath>bin\x86\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>full</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Release|x86'">
+    <OutputPath>bin\x86\Release\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <ItemGroup>
+    <!-- A reference to the entire .Net Framework and Windows SDK are automatically included -->
+    <Content Include="ApplicationInsights.config">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <None Include="Scripts\AppVersionIncrement.ps1" />
+    <PRIResource Include="Strings\en-US\Resources.resw" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Commands\DelegateCommander.cs" />
+    <Compile Include="Controls\CardControl.cs" />
+    <Compile Include="Controls\FlashCardControl.xaml.cs">
+      <DependentUpon>FlashCardControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\LoginModal.xaml.cs">
+      <DependentUpon>LoginModal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\MatchButtonControl.xaml.cs">
+      <DependentUpon>MatchButtonControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Controls\NothingHereControl.xaml.cs">
+      <DependentUpon>NothingHereControl.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Converters\AutoSuggestQueryConverter.cs" />
+    <Compile Include="Converters\BoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\BoolToYesNoConverter.cs" />
+    <Compile Include="Converters\ColorToBrushConverter.cs" />
+    <Compile Include="Converters\ComboBoxLanguageConverter.cs" />
+    <Compile Include="Converters\DateTimeToFormattedString.cs" />
+    <Compile Include="Converters\DateTimeToFormattedStringWithTime.cs" />
+    <Compile Include="Converters\FlashCardSortingModeConverter.cs" />
+    <Compile Include="Converters\FlashCardModeConverter.cs" />
+    <Compile Include="Converters\HasImagesConverter.cs" />
+    <Compile Include="Converters\InverseBoolToVisibilityConverter.cs" />
+    <Compile Include="Converters\MatchButtonColorConverter.cs" />
+    <Compile Include="Converters\NullableBoolToCheckboxConverter.cs" />
+    <Compile Include="Converters\NullToVisibilityConverter.cs" />
+    <Compile Include="Converters\StarbuttonConverter.cs" />
+    <Compile Include="Converters\TermViewModelObjectConverter.cs" />
+    <Compile Include="Converters\VisibleWhenZeroConverter.cs" />
+    <Compile Include="Extensions\TextBoxFocusExtension.cs" />
+    <Compile Include="Helpers\Constants.cs" />
+    <Compile Include="Helpers\Enums\GameEnums.cs" />
+    <Compile Include="Helpers\Enums\NewClassNavigation.cs" />
+    <Compile Include="Helpers\HttpClientHelper.cs" />
+    <Compile Include="Helpers\JsonHomeFeedConverter.cs" />
+    <Compile Include="Helpers\JsonSearchConverter.cs" />
+    <Compile Include="Helpers\MicrosecondEpochConverter.cs" />
+    <Compile Include="Helpers\SetVisibilityConverter.cs" />
+    <Compile Include="Helpers\UWPScreenResolutionHelper.cs" />
+    <Compile Include="Models\Image.cs" />
+    <Compile Include="Models\Navigation\CardGameNavigationModel.cs" />
+    <Compile Include="Models\Navigation\CardSettingsNavigationModel.cs" />
+    <Compile Include="Models\Navigation\LearnGameNavigationModel.cs" />
+    <Compile Include="Models\Navigation\LearnSettingsNavigationModel.cs" />
+    <Compile Include="Models\Navigation\LoginPageNavigationModel.cs" />
+    <Compile Include="Models\Navigation\MatchPageNavigationModel.cs" />
+    <Compile Include="Models\Navigation\MatchResultPageNavigationModel.cs" />
+    <Compile Include="Models\QuizletTypes\Authentication.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\ClassFeed.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\CreatedFeed.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\Home\HomeFeed.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\Home\IHomeItem.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\Home\IHomeItemVM.cs" />
+    <Compile Include="Models\QuizletTypes\Feeds\StudySessionsFeed.cs" />
+    <Compile Include="Models\QuizletTypes\Search\GroupQ.cs" />
+    <Compile Include="Models\QuizletTypes\Search\ISearchItem.cs" />
+    <Compile Include="Models\QuizletTypes\Search\SearchResult.cs" />
+    <Compile Include="Models\QuizletTypes\Search\SetQ.cs" />
+    <Compile Include="Models\QuizletTypes\Search\UserQ.cs" />
+    <Compile Include="Models\QuizletTypes\Uploading\ClassResponse\ClassCreatedResponse.cs" />
+    <Compile Include="Models\QuizletTypes\Uploading\CreateClass.cs" />
+    <Compile Include="Models\QuizletTypes\Uploading\CreateSet.cs" />
+    <Compile Include="Models\QuizletTypes\Uploading\UpdateSet.cs" />
+    <Compile Include="Models\QuizletTypes\User\Classes.cs" />
+    <Compile Include="Models\QuizletTypes\User\Statistics.cs" />
+    <Compile Include="Models\QuizletTypes\User\StudySession.cs" />
+    <Compile Include="Models\QuizletTypes\User\User.cs" />
+    <Compile Include="Models\Set.cs" />
+    <Compile Include="Models\Settings\SetsSettings.cs" />
+    <Compile Include="Models\Term.cs" />
+    <Compile Include="Models\UserSettings.cs" />
+    <Compile Include="Models\ViewModels\CardViewModel.cs" />
+    <Compile Include="Models\ViewModels\LanguageViewModel.cs" />
+    <Compile Include="Models\ViewModels\LearnResultListViewBase.cs" />
+    <Compile Include="Models\ViewModels\MatchButtonViewModel.cs" />
+    <Compile Include="Models\ViewModels\ResultHeader.cs" />
+    <Compile Include="Models\ViewModels\TermDefinitionViewModel.cs" />
+    <Compile Include="Models\ViewModels\TermResultViewModel.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Repositories\ClassesFetcher.cs" />
+    <Compile Include="Repositories\ClassesLocalStorageRepository.cs" />
+    <Compile Include="Repositories\Exceptions\SetIsPrivateException.cs" />
+    <Compile Include="Repositories\IClassFetcher.cs" />
+    <Compile Include="Repositories\ILocalClassesStorage.cs" />
+    <Compile Include="Repositories\ILocalRecentStudySessions.cs" />
+    <Compile Include="Repositories\IQuizletRESTApi.cs" />
+    <Compile Include="Repositories\ISetFetcher.cs" />
+    <Compile Include="Repositories\ISetsLocalStorage.cs" />
+    <Compile Include="Repositories\QuizletRemoteRESTApi.cs" />
+    <Compile Include="Repositories\QuizletUserRepository.cs" />
+    <Compile Include="Repositories\RecentStudySessionsRepository.cs" />
+    <Compile Include="Repositories\SetFetcher.cs" />
+    <Compile Include="Repositories\SetsLocalStorageRepository.cs" />
+    <Compile Include="Services\SettingsServices\SettingsService.cs" />
+    <Compile Include="TemplateSelectors\HeaderOrTermTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\HomeFeedTemplateSelector.cs" />
+    <Compile Include="TemplateSelectors\TermViewSelector.cs" />
+    <Compile Include="Models\ViewModels\TermViewModel.cs" />
+    <Compile Include="ViewModels\CardPageViewModel.cs" />
+    <Compile Include="ViewModels\CardSettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\ClassDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginSignupPageViewModel.cs" />
+    <Compile Include="ViewModels\MyClassesPageViewModel.cs" />
+    <Compile Include="ViewModels\ClassesPageViewModel.cs" />
+    <Compile Include="ViewModels\MyRecentSessionsPageViewModel.cs" />
+    <Compile Include="ViewModels\MySetsPageViewModel.cs" />
+    <Compile Include="ViewModels\NewClassPageViewModel.cs" />
+    <Compile Include="ViewModels\NewSetPageViewModel.cs" />
+    <Compile Include="ViewModels\PrivateSetPageViewModel.cs" />
+    <Compile Include="ViewModels\RecentSessionsPageViewModel.cs" />
+    <Compile Include="ViewModels\SetsPageViewModel.cs" />
+    <Compile Include="ViewModels\LearnEndResultsPageViewModel.cs" />
+    <Compile Include="ViewModels\LearnPageViewModel.cs" />
+    <Compile Include="ViewModels\LearnSettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\LearnTempResultsPageViewModel.cs" />
+    <Compile Include="ViewModels\LoginPageViewModel.cs" />
+    <Compile Include="ViewModels\HomePageViewModel.cs" />
+    <Compile Include="ViewModels\DetailPageViewModel.cs" />
+    <Compile Include="ViewModels\MatchPageViewModel.cs" />
+    <Compile Include="ViewModels\MatchResultPageViewModel.cs" />
+    <Compile Include="ViewModels\SearchPageViewModel.cs" />
+    <Compile Include="ViewModels\SetDetailPageViewModel.cs" />
+    <Compile Include="ViewModels\SettingsPageViewModel.cs" />
+    <Compile Include="ViewModels\UserPageViewModel.cs" />
+    <Compile Include="Views\Busy.xaml.cs">
+      <DependentUpon>Busy.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardsPage.xaml.cs">
+      <DependentUpon>CardsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\CardsSettingsPage.xaml.cs">
+      <DependentUpon>CardsSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClassDetailPage.xaml.cs">
+      <DependentUpon>ClassDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\ClassesPage.xaml.cs">
+      <DependentUpon>ClassesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\DetailPage.xaml.cs">
+      <DependentUpon>DetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginSignupPage.xaml.cs">
+      <DependentUpon>LoginSignupPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyClassesPage.xaml.cs">
+      <DependentUpon>MyClassesPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MyRecentSessionsPage.xaml.cs">
+      <DependentUpon>MyRecentSessionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MySetsPage.xaml.cs">
+      <DependentUpon>MySetsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewClassPage.xaml.cs">
+      <DependentUpon>NewClassPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\NewSetPage.xaml.cs">
+      <DependentUpon>NewSetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\PrivateSetPage.xaml.cs">
+      <DependentUpon>PrivateSetPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\RecentSessionsPage.xaml.cs">
+      <DependentUpon>RecentSessionsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetsPage.xaml.cs">
+      <DependentUpon>SetsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LearnEndResultsPage.xaml.cs">
+      <DependentUpon>LearnEndResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LearnPage.xaml.cs">
+      <DependentUpon>LearnPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LearnSettingsPage.xaml.cs">
+      <DependentUpon>LearnSettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LearnTempResultsPage.xaml.cs">
+      <DependentUpon>LearnTempResultsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\LoginPage.xaml.cs">
+      <DependentUpon>LoginPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\HomePage.xaml.cs">
+      <DependentUpon>HomePage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchPage.xaml.cs">
+      <DependentUpon>MatchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\MatchResultPage.xaml.cs">
+      <DependentUpon>MatchResultPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SearchPage.xaml.cs">
+      <DependentUpon>SearchPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SetDetailPage.xaml.cs">
+      <DependentUpon>SetDetailPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\SettingsPage.xaml.cs">
+      <DependentUpon>SettingsPage.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Shell.xaml.cs">
+      <DependentUpon>Shell.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Splash.xaml.cs">
+      <DependentUpon>Splash.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\UserPage.xaml.cs">
+      <DependentUpon>UserPage.xaml</DependentUpon>
+    </Compile>
+  </ItemGroup>
+  <ItemGroup>
+    <AppxManifest Include="Package.appxmanifest">
+      <SubType>Designer</SubType>
+    </AppxManifest>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Assets\avatar.png" />
+    <Content Include="Assets\icon.svg" />
+    <Content Include="Assets\NewStoreLogo.scale-100.png" />
+    <Content Include="Assets\NewStoreLogo.scale-125.png" />
+    <Content Include="Assets\NewStoreLogo.scale-150.png" />
+    <Content Include="Assets\NewStoreLogo.scale-200.png" />
+    <Content Include="Assets\NewStoreLogo.scale-400.png" />
+    <Content Include="Assets\SplashScreen.scale-100.png" />
+    <Content Include="Assets\SplashScreen.scale-125.png" />
+    <Content Include="Assets\SplashScreen.scale-150.png" />
+    <Content Include="Assets\SplashScreen.scale-200.png" />
+    <Content Include="Assets\SplashScreen.scale-400.png" />
+    <Content Include="Assets\Square150x150Logo.scale-100.png" />
+    <Content Include="Assets\Square150x150Logo.scale-125.png" />
+    <Content Include="Assets\Square150x150Logo.scale-150.png" />
+    <Content Include="Assets\Square150x150Logo.scale-200.png" />
+    <Content Include="Assets\Square150x150Logo.scale-400.png" />
+    <Content Include="Assets\Square310x310Logo.scale-100.png" />
+    <Content Include="Assets\Square310x310Logo.scale-125.png" />
+    <Content Include="Assets\Square310x310Logo.scale-150.png" />
+    <Content Include="Assets\Square310x310Logo.scale-200.png" />
+    <Content Include="Assets\Square310x310Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.scale-100.png" />
+    <Content Include="Assets\Square44x44Logo.scale-125.png" />
+    <Content Include="Assets\Square44x44Logo.scale-150.png" />
+    <Content Include="Assets\Square44x44Logo.scale-200.png" />
+    <Content Include="Assets\Square44x44Logo.scale-400.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-16_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-24_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-256_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-32_altform-unplated.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48.png" />
+    <Content Include="Assets\Square44x44Logo.targetsize-48_altform-unplated.png" />
+    <Content Include="Assets\Square71x71Logo.scale-100.png" />
+    <Content Include="Assets\Square71x71Logo.scale-125.png" />
+    <Content Include="Assets\Square71x71Logo.scale-150.png" />
+    <Content Include="Assets\Square71x71Logo.scale-200.png" />
+    <Content Include="Assets\Square71x71Logo.scale-400.png" />
+    <Content Include="Assets\ThisUsesQuizlet-Blue.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-100.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-125.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-150.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-200.png" />
+    <Content Include="Assets\Wide310x150Logo.scale-400.png" />
+    <Content Include="Help.htm" />
+    <None Include="Package.StoreAssociation.xml" />
+    <Content Include="Properties\Default.rd.xml" />
+    <Content Include="Assets\LockScreenLogo.scale-200.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+  </ItemGroup>
+  <ItemGroup>
+    <Page Include="Controls\FlashCardControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\LoginModal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\MatchButtonControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Controls\NothingHereControl.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Styles\Custom.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Page>
+    <Page Include="Themes\Generic.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\Busy.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\CardsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\CardsSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClassDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\ClassesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\DetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginSignupPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyClassesPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MyRecentSessionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MySetsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewClassPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\NewSetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\PrivateSetPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\RecentSessionsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LearnEndResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LearnPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LearnSettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LearnTempResultsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\LoginPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\HomePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="Views\MatchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\MatchResultPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SearchPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SetDetailPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\SettingsPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Shell.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\Splash.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Views\UserPage.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Folder Include="Services\RestConsumers\" />
+  </ItemGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.ApplicationInsights">
+      <Version>2.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ApplicationInsights.PersistenceChannel">
+      <Version>1.2.3</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.ApplicationInsights.WindowsApps">
+      <Version>1.1.1</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.NETCore.UniversalWindowsPlatform">
+      <Version>5.4.0</Version>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Uwp.Managed">
+      <Version>2.0.0</Version>
+    </PackageReference>
+    <PackageReference Include="Newtonsoft.Json">
+      <Version>10.0.3</Version>
+    </PackageReference>
+    <PackageReference Include="StructureMap">
+      <Version>4.5.2</Version>
+    </PackageReference>
+    <PackageReference Include="Template10">
+      <Version>1.1.12</Version>
+    </PackageReference>
+    <PackageReference Include="Unity">
+      <Version>4.0.1</Version>
+    </PackageReference>
+  </ItemGroup>
+  <PropertyGroup Condition=" '$(VisualStudioVersion)' == '' or '$(VisualStudioVersion)' &lt; '14.0' ">
+    <VisualStudioVersion>14.0</VisualStudioVersion>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .Net Native|ARM'">
+    <OutputPath>bin\ARM\Debug .Net Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>false</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>ARM</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+    <UseDotNetNativeToolchain>true</UseDotNetNativeToolchain>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .Net Native|x64'">
+    <OutputPath>bin\x64\Debug .Net Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x64</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug .Net Native|x86'">
+    <OutputPath>bin\x86\Debug .Net Native\</OutputPath>
+    <DefineConstants>TRACE;NETFX_CORE;WINDOWS_UWP;CODE_ANALYSIS</DefineConstants>
+    <Optimize>true</Optimize>
+    <NoWarn>;2008</NoWarn>
+    <NoStdLib>true</NoStdLib>
+    <DebugType>pdbonly</DebugType>
+    <PlatformTarget>x86</PlatformTarget>
+    <UseVSHostingProcess>false</UseVSHostingProcess>
+    <ErrorReport>prompt</ErrorReport>
+    <CodeAnalysisRuleSet>MinimumRecommendedRules.ruleset</CodeAnalysisRuleSet>
+    <Prefer32Bit>true</Prefer32Bit>
+  </PropertyGroup>
+  <Import Project="$(MSBuildExtensionsPath)\Microsoft\WindowsXaml\v$(VisualStudioVersion)\Microsoft.Windows.UI.Xaml.CSharp.targets" />
+  <PropertyGroup>
+    <PreBuildEvent>"%25SystemRoot%25\system32\WindowsPowerShell\v1.0\powershell.exe" -file $(ProjectDir)Scripts\AppVersionIncrement.ps1 $(ProjectDir)</PreBuildEvent>
+  </PropertyGroup>
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>
